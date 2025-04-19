@@ -30,14 +30,65 @@
     <h2 class="text-3xl font-bold text-center mb-10">Galería del Sistema</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       <!-- Reemplaza los src con tus imágenes reales -->
-      <img src="foto1 .jpg" alt="Pantalla 1" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="foto2.jpg" alt="Pantalla 2" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="foto 3.jpg" alt="Pantalla 3" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="foto4.jpg" alt="Pantalla 4" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="foto 5.jpg" alt="Pantalla 5" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="foto 6.jpg" alt="Pantalla 6" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="Assets/foto1 .jpg" alt="Pantalla 1" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="Assets/foto2.jpg" alt="Pantalla 2" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="Assets/foto 3.jpg" alt="Pantalla 3" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="Assets/foto4.jpg" alt="Pantalla 4" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="Assets/foto 5.jpg" alt="Pantalla 5" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="Assets/foto 6.jpg" alt="Pantalla 6" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
     </div>
   </section>
+
+  <!-- Formulario de opiniones -->
+<section class="bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 py-20 px-6 text-white">
+    <div class="max-w-xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl p-8">
+      <h2 class="text-3xl font-bold text-center mb-6 text-yellow-400 drop-shadow-lg">¿Qué opinas del sistema?</h2>
+      <form id="whatsappForm">
+        <div class="mb-4">
+          <label for="nombre" class="block text-sm font-semibold mb-2 text-white">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            class="w-full bg-white/20 text-white placeholder-white/60 border border-white/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            placeholder="Escribe tu nombre"
+            required
+          />
+        </div>
+        <div class="mb-6">
+          <label for="opinion" class="block text-sm font-semibold mb-2 text-white">Tu opinión</label>
+          <textarea
+            id="opinion"
+            rows="4"
+            class="w-full bg-white/20 text-white placeholder-white/60 border border-white/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            placeholder="Escribe tu mensaje"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-yellow-400 text-blue-950 font-bold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+        >
+          Enviar por WhatsApp
+        </button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Script para enviar a WhatsApp -->
+  <script>
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const opinion = document.getElementById('opinion').value.trim();
+  
+      const mensaje = `Hola, soy ${nombre}. Quiero compartir mi opinión sobre el sistema: ${opinion}`;
+      const numero = '50581088124';
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  
+      window.open(url, '_blank');
+    });
+  </script>
+  
 
 </body>
 </html>
