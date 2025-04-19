@@ -32,12 +32,12 @@
     <h2 class="text-3xl font-bold text-center mb-10">Galería del Sistema</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       <!-- Reemplaza los src con tus imágenes reales -->
-      <img src="Assets/foto1 .jpg" alt="Pantalla 1" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="Assets/foto2.jpg" alt="Pantalla 2" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="Assets/foto 3.jpg" alt="Pantalla 3" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="Assets/foto4.jpg" alt="Pantalla 4" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="Assets/foto 5.jpg" alt="Pantalla 5" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src="Assets/foto 6.jpg" alt="Pantalla 6" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="static/Assets/foto1 .jpg" alt="Pantalla 1" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="static/Assets/foto2.jpg" alt="Pantalla 2" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="static/Assets/foto 3.jpg" alt="Pantalla 3" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="static/Assets/foto4.jpg" alt="Pantalla 4" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="static/Assets/foto 5.jpg" alt="Pantalla 5" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="static/Assets/foto 6.jpg" alt="Pantalla 6" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
     </div>
   </section>
 
@@ -157,40 +157,42 @@ title="Chatear por WhatsApp"
   const form = document.getElementById('comentarioForm');
   const listaComentarios = document.getElementById('listaComentarios');
 
-  // Cargar comentarios almacenados al iniciar
-  window.addEventListener('DOMContentLoaded', () => {
-    const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+  async function cargarComentarios() {
+    const res = await fetch('/api/comentarios');
+    const comentarios = await res.json();
     comentarios.forEach(mostrarComentario);
-  });
+  }
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-
     const nombre = document.getElementById('usuario').value.trim();
     const texto = document.getElementById('comentario').value.trim();
     if (!nombre || !texto) return;
 
-    const nuevo = { nombre, texto };
+    await fetch('/api/comentarios', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre, texto }),
+    });
 
-    // Guardar en LocalStorage
-    const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
-    comentarios.unshift(nuevo);
-    localStorage.setItem('comentarios', JSON.stringify(comentarios));
-
-    mostrarComentario(nuevo);
+    mostrarComentario({ nombre, texto });
     form.reset();
   });
 
   function mostrarComentario({ nombre, texto }) {
-    const comentarioDiv = document.createElement('div');
-    comentarioDiv.className = 'bg-white/10 border border-white/20 rounded-lg p-4 shadow';
-    comentarioDiv.innerHTML = `
+    const div = document.createElement('div');
+    div.className = 'bg-white/10 border border-white/20 rounded-lg p-4 shadow';
+    div.innerHTML = `
       <p class="text-yellow-300 font-semibold">${nombre}</p>
       <p class="text-white mt-1">${texto}</p>
     `;
-    listaComentarios.prepend(comentarioDiv);
+    listaComentarios.prepend(div);
   }
+
+  // Cargar comentarios al inicio
+  cargarComentarios();
 </script>
+
 
 
 
