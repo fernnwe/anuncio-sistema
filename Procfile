@@ -1,3 +1,4 @@
-web: python "anuncio_sistema/mi-app/app.py"
+web: gunicorn mi-app.app:app
+
 
 
