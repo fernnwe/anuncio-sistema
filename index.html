@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Facturación</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 min-h-screen text-white">
+
+  <!-- Sección principal -->
+  <section class="flex items-center justify-center min-h-screen px-6" id="inicio">
+    <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl p-10 max-w-2xl text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-4 drop-shadow-lg">
+        Sistema de Facturación y Control de Inventario
+      </h1>
+      <p class="text-lg md:text-xl text-gray-200 mb-6">
+        Potencia tu negocio con una herramienta moderna, eficiente y profesional.
+      </p>
+      <a href="#galeria">
+        <div class="inline-block bg-yellow-400 text-blue-950 text-md font-bold px-6 py-3 rounded-full shadow-lg tracking-wide hover:scale-105 transition-transform duration-300">
+          Más información
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section id="galeria" class="py-20 px-6 bg-white text-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-10">Galería del Sistema</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <!-- Reemplaza los src con tus imágenes reales -->
+      <img src="https://via.placeholder.com/400x300?text=Pantalla+1" alt="Pantalla 1" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="https://via.placeholder.com/400x300?text=Pantalla+2" alt="Pantalla 2" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="https://via.placeholder.com/400x300?text=Pantalla+3" alt="Pantalla 3" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="https://via.placeholder.com/400x300?text=Pantalla+4" alt="Pantalla 4" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="https://via.placeholder.com/400x300?text=Pantalla+5" alt="Pantalla 5" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+      <img src="https://via.placeholder.com/400x300?text=Pantalla+6" alt="Pantalla 6" class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+    </div>
+  </section>
+
+  <!-- Formulario de opiniones -->
+<section class="bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 py-20 px-6 text-white">
+    <div class="max-w-xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl p-8">
+      <h2 class="text-3xl font-bold text-center mb-6 text-yellow-400 drop-shadow-lg">¿Qué opinas del sistema?</h2>
+      <form id="whatsappForm">
+        <div class="mb-4">
+          <label for="nombre" class="block text-sm font-semibold mb-2 text-white">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            class="w-full bg-white/20 text-white placeholder-white/60 border border-white/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            placeholder="Escribe tu nombre"
+            required
+          />
+        </div>
+        <div class="mb-6">
+          <label for="opinion" class="block text-sm font-semibold mb-2 text-white">Tu opinión</label>
+          <textarea
+            id="opinion"
+            rows="4"
+            class="w-full bg-white/20 text-white placeholder-white/60 border border-white/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            placeholder="Escribe tu mensaje"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-yellow-400 text-blue-950 font-bold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+        >
+          Enviar por WhatsApp
+        </button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Script para enviar a WhatsApp -->
+  <script>
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const opinion = document.getElementById('opinion').value.trim();
+  
+      const mensaje = `Hola, soy ${nombre}. Quiero compartir mi opinión sobre el sistema: ${opinion}`;
+      const numero = '50581088124';
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  
+      window.open(url, '_blank');
+    });
+  </script>
+
+<a
+href="https://wa.me/50581088124"
+target="_blank"
+class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50 transition-transform hover:scale-110"
+title="Chatear por WhatsApp"
+>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10.75C3 6.67 6.67 3 10.75 3s7.75 3.67 7.75 7.75a7.73 7.73 0 01-1.49 4.59l1.24 4.66-4.78-1.25a7.73 7.73 0 01-4.72 1.51C6.67 20.75 3 17.08 3 13V10.75z" />
+</svg>
+</a>
+
+<!-- Sección de Comentarios (con LocalStorage) -->
+<section class="bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 py-20 px-6 text-white">
+    <div class="max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl p-8">
+      <h2 class="text-3xl font-bold text-center mb-6 text-yellow-400 drop-shadow-lg">Comentarios de Usuarios</h2>
+      <form id="comentarioForm" class="mb-8">
+        <div class="mb-4">
+          <label for="usuario" class="block text-sm font-semibold mb-2">Nombre</label>
+          <input
+            type="text"
+            id="usuario"
+            class="w-full bg-white/20 text-white placeholder-white/60 border border-white/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            placeholder="Tu nombre"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="comentario" class="block text-sm font-semibold mb-2">Comentario</label>
+          <textarea
+            id="comentario"
+            rows="3"
+            class="w-full bg-white/20 text-white placeholder-white/60 border border-white/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            placeholder="Escribe tu opinión"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-yellow-400 text-blue-950 font-bold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+        >
+          Publicar comentario
+        </button>
+      </form>
+  
+      <div id="listaComentarios" class="space-y-4">
+        <!-- Comentarios se insertan aquí -->
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('comentarioForm');
+    const listaComentarios = document.getElementById('listaComentarios');
+  
+    // Cargar comentarios almacenados al iniciar
+    window.addEventListener('DOMContentLoaded', () => {
+      const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+      comentarios.forEach(mostrarComentario);
+    });
+  
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+  
+      const nombre = document.getElementById('usuario').value.trim();
+      const texto = document.getElementById('comentario').value.trim();
+      if (!nombre || !texto) return;
+  
+      const nuevo = { nombre, texto };
+  
+      // Guardar en LocalStorage
+      const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+      comentarios.unshift(nuevo);
+      localStorage.setItem('comentarios', JSON.stringify(comentarios));
+  
+      mostrarComentario(nuevo);
+      form.reset();
+    });
+  
+    function mostrarComentario({ nombre, texto }) {
+      const comentarioDiv = document.createElement('div');
+      comentarioDiv.className = 'bg-white/10 border border-white/20 rounded-lg p-4 shadow';
+      comentarioDiv.innerHTML = `
+        <p class="text-yellow-300 font-semibold">${nombre}</p>
+        <p class="text-white mt-1">${texto}</p>
+      `;
+      listaComentarios.prepend(comentarioDiv);
+    }
+  </script>
+  
+  
+
+<footer class="bg-blue-950 text-center text-white py-6 mt-12">
+    <p class="text-sm">© 2025 Deybis y Nelson. Todos los derechos reservados.</p>
+    <p class="text-xs mt-1">Desarrollado por <a href="#" class="underline hover:text-yellow-400 transition">MK_Digital</a></p>
+  </footer>
+  
+
+  
+
+</body>
+</html>
