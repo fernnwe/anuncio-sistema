@@ -129,7 +129,7 @@ title="Chatear por WhatsApp"
           type="submit"
           class="w-full bg-yellow-400 text-blue-950 font-bold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
         >
-          Publicar comentario
+          Enviar Comentario
         </button>
       </form>
   
@@ -149,24 +149,27 @@ title="Chatear por WhatsApp"
       comentarios.forEach(mostrarComentario);
     });
   
+    // Evento al enviar el formulario
     form.addEventListener('submit', function (e) {
       e.preventDefault();
   
       const nombre = document.getElementById('usuario').value.trim();
       const texto = document.getElementById('comentario').value.trim();
+  
       if (!nombre || !texto) return;
   
-      const nuevo = { nombre, texto };
+      const nuevoComentario = { nombre, texto };
   
       // Guardar en LocalStorage
       const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
-      comentarios.unshift(nuevo);
+      comentarios.unshift(nuevoComentario);
       localStorage.setItem('comentarios', JSON.stringify(comentarios));
   
-      mostrarComentario(nuevo);
+      mostrarComentario(nuevoComentario);
       form.reset();
     });
   
+    // Función para mostrar un comentario en pantalla
     function mostrarComentario({ nombre, texto }) {
       const comentarioDiv = document.createElement('div');
       comentarioDiv.className = 'bg-white/10 border border-white/20 rounded-lg p-4 shadow';
